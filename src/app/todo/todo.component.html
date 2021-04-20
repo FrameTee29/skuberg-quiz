@@ -33,13 +33,14 @@
         class="border-2 w-full p-2 rounded-lg flex justify-between flex-col md:flex-row"
       >
         <div class="flex flex-row items-center w-full">
-          <input
+          <!-- <input
             nz-input
             placeholder="Basic usage"
             [(ngModel)]="item.content"
             [ngClass]="item.disable === true ? 'ml-3 text-white mr-3 w-full bg-black border-0':'mx-3 '"
             [disabled]="item.disable"
-          />
+          /> -->
+          <div>{{item.content}}</div>
         </div>
         <div class="flex items-center justify-center flex-row mt-2">
           <div class="text-green-lime cursor-pointer text-lg" (click)="handleSaveBucketToData(item.id)">✓</div>
@@ -59,13 +60,14 @@
         class="border-2 border-green-limegreen w-full p-2 rounded-lg flex justify-between flex-col md:flex-row"
       >
         <div class="flex flex-row items-center w-full">
-          <input
+          <!-- <input
             nz-input
             placeholder="Basic usage"
             [(ngModel)]="item.content"
             [ngClass]="item.disable === true ? 'ml-3 text-white mr-3 w-full bg-black border-0':'mx-3 '"
             [disabled]="item.disable"
-          />
+          /> -->
+          <div>{{item.content}}</div>
         </div>
         <div class="flex items-center justify-center flex-row mt-2 md:mt-0">
           <div class="text-red-600 cursor-pointer" (click)="handleDelte(item.id)" >DELETE</div>
