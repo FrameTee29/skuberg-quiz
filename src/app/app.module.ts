@@ -16,11 +16,15 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { HomeComponent } from './home/home.component';
 import { HomeModule } from './home/home.module';
+import { TodoComponent } from './todo/todo.component';
+import { TodoModule } from './todo/todo.module';
+import { MovieComponent } from './movie/movie.component';
+import { MovieModule } from './movie/movie.module';
 
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, TodoComponent, MovieComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,7 +35,9 @@ registerLocaleData(en);
     NzLayoutModule,
     NzMenuModule,
     NzButtonModule,
-    HomeModule
+    HomeModule,
+    TodoModule,
+    MovieModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
