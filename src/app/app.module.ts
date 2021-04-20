@@ -20,6 +20,10 @@ import { TodoComponent } from './todo/todo.component';
 import { TodoModule } from './todo/todo.module';
 import { MovieComponent } from './movie/movie.component';
 import { MovieModule } from './movie/movie.module';
+import { NzInputModule } from 'ng-zorro-antd/input'
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox'
+import { NzDividerModule } from 'ng-zorro-antd/divider'
+
 
 registerLocaleData(en);
 
@@ -35,6 +39,9 @@ registerLocaleData(en);
     NzLayoutModule,
     NzMenuModule,
     NzButtonModule,
+    NzInputModule,
+    NzCheckboxModule,
+    NzDividerModule,
     HomeModule,
     TodoModule,
     MovieModule,
