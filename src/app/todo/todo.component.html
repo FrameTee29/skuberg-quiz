@@ -51,12 +51,12 @@
   </div>
 
   <div class="mt-4 flex flex-col w-full md:w-laptop">
-    <div class="text-base font-semibold mb-3">COMPELETE TODO LIST</div>
+    <div class="text-base font-semibold mb-3 text-green-limegreen">COMPELETE TODO LIST</div>
     <div *ngIf="TodoData.length===0" class="italic">-</div>
     <div class="grid grid-cols-1 gap-3">
       <div
         *ngFor="let item of TodoData;"
-        class="border-2 w-full p-2 rounded-lg flex justify-between flex-col md:flex-row"
+        class="border-2 border-green-limegreen w-full p-2 rounded-lg flex justify-between flex-col md:flex-row"
       >
         <div class="flex flex-row items-center w-full">
           <input
@@ -67,7 +67,7 @@
             [disabled]="item.disable"
           />
         </div>
-        <div class="flex items-center justify-center flex-row mt-2">
+        <div class="flex items-center justify-center flex-row mt-2 md:mt-0">
           <div class="text-red-600 cursor-pointer" (click)="handleDelte(item.id)" >DELETE</div>
         </div>
       </div>
