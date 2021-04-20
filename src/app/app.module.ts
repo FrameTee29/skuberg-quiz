@@ -23,6 +23,7 @@ import { MovieModule } from './movie/movie.module';
 import { NzInputModule } from 'ng-zorro-antd/input'
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox'
 import { NzDividerModule } from 'ng-zorro-antd/divider'
+import { NzMessageService } from 'ng-zorro-antd/message'
 
 
 registerLocaleData(en);
@@ -46,7 +47,7 @@ registerLocaleData(en);
     TodoModule,
     MovieModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, useValue: en_US }, NzMessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

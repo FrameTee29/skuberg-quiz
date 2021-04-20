@@ -1,5 +1,5 @@
 <div
-  class="flex flex-col w-screen min-h-screen items-center bg-black text-white p-5"
+  class="flex flex-col w-screen min-h-screen items-center bg-black text-white p-5 overflow-y-auto"
 >
   <div>
     <div class="text-4xl mt-5">
@@ -10,13 +10,14 @@
 
   <div class="mt-3">
     <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
-      <input type="text" nz-input placeholder="input todo" />
+      <input type="text" nz-input placeholder="input todo" [(ngModel)]="newTodoContent"/>
     </nz-input-group>
     <ng-template #suffixButton>
       <button
         nz-button
         nzSize="large"
         class="bg-green-limegreen font-semibold border-2 focus:border-green-limegreen focus:text-black hover:border-green-limegreen"
+        (click)="handleAddToBucket(newTodoContent)"
       >
         Add
       </button>
@@ -24,31 +25,50 @@
   </div>
 
   <div class="mt-4 flex flex-col md:w-laptop">
-    <div class="text-base font-semibold mb-3">SHOW TODO LIST</div>
+    <div class="text-base font-semibold mb-3">TODO BUCKET</div>
+    <div *ngIf="TodoBucket.length===0" class="italic">-</div>
     <div class="grid grid-cols-1 gap-3">
       <div
-        *ngFor="let item of TodoData"
-        class="border-2 w-full p-2 rounded-lg flex justify-between"
+        *ngFor="let item of TodoBucket;"
+        class="border-2 w-full p-2 rounded-lg flex justify-between flex-col md:flex-row"
       >
-        <div class="flex flex-row items-center">
-          <label
-            nz-checkbox
-            [(ngModel)]="item.checked"
-            class="text-white"
-          ></label>
+        <div class="flex flex-row items-center w-full">
           <input
             nz-input
             placeholder="Basic usage"
             [(ngModel)]="item.content"
-            class="ml-3 text-gray-900"
-            [disabled]="true"
+            [ngClass]="item.disable === true ? 'ml-3 text-white mr-3 w-full bg-black border-0':'mx-3 '"
+            [disabled]="item.disable"
           />
         </div>
+        <div class="flex items-center justify-center flex-row mt-2">
+          <div class="text-green-lime cursor-pointer text-lg" (click)="handleSaveBucketToData(item.id)">✓</div>
+          <nz-divider nzType="vertical" class="bg-white my-1"></nz-divider>
+          <div class="text-red-600 cursor-pointer" (click)="handleDelteInBucket(item.id)" >Delete</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <div class="flex flex-row items-center justify-center">
-          <div class="text-green-lime cursor-pointer">EDIT</div>
-          <nz-divider nzType="vertical" class="bg-white"></nz-divider>
-          <div class="text-red-600 cursor-pointer">DELETE</div>
+  <div class="mt-4 flex flex-col md:w-laptop">
+    <div class="text-base font-semibold mb-3">COMPELETE TODO LIST</div>
+    <div *ngIf="TodoData.length===0" class="italic">-</div>
+    <div class="grid grid-cols-1 gap-3">
+      <div
+        *ngFor="let item of TodoData;"
+        class="border-2 w-full p-2 rounded-lg flex justify-between flex-col md:flex-row"
+      >
+        <div class="flex flex-row items-center w-full">
+          <input
+            nz-input
+            placeholder="Basic usage"
+            [(ngModel)]="item.content"
+            [ngClass]="item.disable === true ? 'ml-3 text-white mr-3 w-full bg-black border-0':'mx-3 '"
+            [disabled]="item.disable"
+          />
+        </div>
+        <div class="flex items-center justify-center flex-row mt-2">
+          <div class="text-red-600 cursor-pointer" (click)="handleDelte(item.id)" >DELETE</div>
         </div>
       </div>
     </div>
